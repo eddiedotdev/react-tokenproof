@@ -6,7 +6,14 @@
   "license": "MIT",
   "type": "module",
   "author": "Eddi3Js",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "tokenproof"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eddi3js/react-tokenproof.git"
+  },
   "files": [
     "dist",
     "README.md"
