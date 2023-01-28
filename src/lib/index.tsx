@@ -31,7 +31,6 @@ export interface Config {
 
 interface TokenProofProviderProps {
 	children: React.ReactNode;
-	cdnLink: string;
 	config: Config;
 }
 
@@ -41,7 +40,6 @@ const TokenProofContext =
 export const TokenProofProvider = ({
 	config,
 	children,
-	cdnLink,
 }: TokenProofProviderProps) => {
 	const onNonceRef = useRef(null);
 	const onVerifyRef = useRef(null);
@@ -95,7 +93,7 @@ export const TokenProofProvider = ({
 			value={{ login, logout, loginButton, close, setEventRefs }}
 		>
 			<Helmet>
-				<script src={cdnLink}></script>
+				<script src="https://cdn.tokenproof.xyz/js/tokenproof-oa-widget-v1.0.js"></script>
 			</Helmet>
 			{children}
 		</TokenProofContext.Provider>
