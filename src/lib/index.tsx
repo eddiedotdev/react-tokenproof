@@ -12,7 +12,7 @@ export interface TokenProviderActions {
 	logout: () => void;
 	loginButton: () => void;
 	close: () => void;
-	setEventRefs: (onNonce: any, onVerify: any) => void;
+	setEvents: (onNonce: any, onVerify: any) => void;
 }
 
 const defaultValueProvider = {
@@ -20,7 +20,7 @@ const defaultValueProvider = {
 	logout: () => {},
 	loginButton: () => {},
 	close: () => {},
-	setEventRefs: () => {},
+	setEvents: () => {},
 };
 
 export interface Config {
@@ -59,7 +59,7 @@ export const TokenProofProvider = ({
 		}
 	}, [window.tokenproof, onNonceRef, onVerifyRef]);
 
-	const setEventRefs = (onNonce: any, onVerify: any) => {
+	const setEvents = (onNonce: any, onVerify: any) => {
 		onNonceRef.current = onNonce;
 		onVerifyRef.current = onVerify;
 	};
@@ -90,7 +90,7 @@ export const TokenProofProvider = ({
 
 	return (
 		<TokenProofContext.Provider
-			value={{ login, logout, loginButton, close, setEventRefs }}
+			value={{ login, logout, loginButton, close, setEvents }}
 		>
 			<Helmet>
 				<script src="https://cdn.tokenproof.xyz/js/tokenproof-oa-widget-v1.0.js"></script>
