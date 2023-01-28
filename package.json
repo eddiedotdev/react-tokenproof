@@ -1,7 +1,11 @@
 {
   "name": "react-tokenproof",
   "private": false,
+<<<<<<< HEAD
   "version": "0.3.1",
+=======
+  "version": "0.2.0",
+>>>>>>> 7722bac (0.2.0)
   "description": "",
   "license": "MIT",
   "type": "module",
