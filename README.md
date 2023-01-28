@@ -58,11 +58,11 @@ Make sure you apply the `onNonce` and `onVerify` callbacks on the `setEvents` me
 
 ```
 useEffect(() => {
-    setEvents(
-        (nonceEvent) => console.log('onNonceEvent': nonceEvent),
-        (verifyEvent) => console.log('onVerifyEvent': verifyEvent),
-    )
-}, [])
+    setEvents({
+        onNonce: (nonceEvent) => console.log("onNonce:", nonceEvent),
+        onVerify: (verifyEvent) => console.log("onVerify:", verifyEvent),
+    })
+}, []);
 ```
 
 Now you can authenticate/login and utilize the Tokenproof utility methods.

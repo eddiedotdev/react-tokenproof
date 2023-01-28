@@ -41,8 +41,8 @@ export const TokenProofProvider = ({
 	config,
 	children,
 }: TokenProofProviderProps) => {
-	const onNonceRef = useRef(null);
-	const onVerifyRef = useRef(null);
+	const onNonceRef = useRef<any>(null);
+	const onVerifyRef = useRef<any>(null);
 
 	useEffect(() => {
 		if (onNonceRef && onVerifyRef && window.tokenproof) {
@@ -59,7 +59,13 @@ export const TokenProofProvider = ({
 		}
 	}, [window.tokenproof, onNonceRef, onVerifyRef]);
 
-	const setEvents = (onNonce: any, onVerify: any) => {
+	const setEvents = ({
+		onNonce,
+		onVerify,
+	}: {
+		onNonce: (data: any) => any;
+		onVerify: (data: any) => any;
+	}) => {
 		onNonceRef.current = onNonce;
 		onVerifyRef.current = onVerify;
 	};
