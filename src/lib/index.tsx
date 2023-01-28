@@ -1,96 +1,107 @@
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 
 declare global {
-  interface Window {
-    tokenproof: any;
-  }
+	interface Window {
+		tokenproof: any;
+	}
 }
 
 export interface TokenProviderActions {
-  login: () => void;
-  logout: () => void;
-  loginButton: () => void;
-  close: () => void;
+	login: () => void;
+	logout: () => void;
+	loginButton: () => void;
+	close: () => void;
+	setEventRefs: (onNonce: any, onVerify: any) => void;
 }
 
 const defaultValueProvider = {
-  login: () => {},
-  logout: () => {},
-  loginButton: () => {},
-  close: () => {},
+	login: () => {},
+	logout: () => {},
+	loginButton: () => {},
+	close: () => {},
+	setEventRefs: () => {},
 };
 
 export interface Config {
-  appId: null | string;
-  webhook: null | string;
-  env: "development" | string;
+	appId: null | string;
+	webhook: null | string;
+	env: "development" | string;
 }
 
 interface TokenProofProviderProps {
-  children: React.ReactNode;
-  cdnLink: string;
-  config: Config;
-  onNonce: (nonce: any) => void;
-  onVerify: (token: any) => void;
+	children: React.ReactNode;
+	cdnLink: string;
+	config: Config;
 }
 
 const TokenProofContext =
-  createContext<TokenProviderActions>(defaultValueProvider);
+	createContext<TokenProviderActions>(defaultValueProvider);
 
 export const TokenProofProvider = ({
-  onNonce,
-  onVerify,
-  config,
-  children,
-  cdnLink,
+	config,
+	children,
+	cdnLink,
 }: TokenProofProviderProps) => {
-  useEffect(() => {
-    if (window.tokenproof) {
-      window.tokenproof.on("nonce", (e: any) => onNonce(e));
-      window.tokenproof.on("verify", (e: any) => onVerify(e));
+	const onNonceRef = useRef(null);
+	const onVerifyRef = useRef(null);
 
-      return () => {
-        window.tokenproof.off("nonce", onNonce);
-        window.tokenproof.off("verify", onVerify);
-      };
-    }
-  }, [window.tokenproof]);
+	useEffect(() => {
+		if (onNonceRef && onVerifyRef && window.tokenproof) {
+			const onNonce = onNonceRef.current as any;
+			const onVerify = onVerifyRef.current as any;
 
-  const login = () => {
-    if (window.tokenproof) {
-      window.tokenproof.login(config);
-    }
-  };
+			window.tokenproof.on("nonce", (e: any) => onNonce(e));
+			window.tokenproof.on("nonce", (e: any) => onVerify.current(e));
 
-  const logout = () => {
-    if (window.tokenproof) {
-      window.tokenproof.logout(config);
-    }
-  };
+			return () => {
+				window.tokenproof.close("nonce");
+				window.tokenproof.close("verify");
+			};
+		}
+	}, [window.tokenproof, onNonceRef, onVerifyRef]);
 
-  const loginButton = () => {
-    if (window.tokenproof) {
-      window.tokenproof.loginButton(config);
-    }
-  };
+	const setEventRefs = (onNonce: any, onVerify: any) => {
+		onNonceRef.current = onNonce;
+		onVerifyRef.current = onVerify;
+	};
 
-  const close = () => {
-    if (window.tokenproof) {
-      window.tokenproof.close(config);
-    }
-  };
+	const login = () => {
+		if (window.tokenproof) {
+			window.tokenproof.login(config);
+		}
+	};
 
-  return (
-    <TokenProofContext.Provider value={{ login, logout, loginButton, close }}>
-      <Helmet>
-        <script src={cdnLink}></script>
-      </Helmet>
-      {children}
-    </TokenProofContext.Provider>
-  );
+	const logout = () => {
+		if (window.tokenproof) {
+			window.tokenproof.logout(config);
+		}
+	};
+
+	const loginButton = () => {
+		if (window.tokenproof) {
+			window.tokenproof.loginButton(config);
+		}
+	};
+
+	const close = () => {
+		if (window.tokenproof) {
+			window.tokenproof.close(config);
+		}
+	};
+
+	return (
+		<TokenProofContext.Provider
+			value={{ login, logout, loginButton, close, setEventRefs }}
+		>
+			<Helmet>
+				<script src={cdnLink}></script>
+			</Helmet>
+			{children}
+		</TokenProofContext.Provider>
+	);
 };
 
 export const useTokenProof = () => {
-  return useContext(TokenProofContext);
+	return useContext(TokenProofContext);
 };
