@@ -7,7 +7,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 		config={{
 			appId: "",
 			webhook: "",
-			env: "development",
 		}}
 	>
 		<App />

@@ -26,7 +26,6 @@ const defaultValueProvider = {
 export interface Config {
 	appId: null | string;
 	webhook: null | string;
-	env: "development" | string;
 }
 
 interface TokenProofProviderProps {
@@ -43,6 +42,11 @@ export const TokenProofProvider = ({
 }: TokenProofProviderProps) => {
 	const onNonceRef = useRef<any>(null);
 	const onVerifyRef = useRef<any>(null);
+
+	const internalConfig = {
+		...config,
+		env: process.env.NODE_ENV ?? "development",
+	};
 
 	useEffect(() => {
 		if (onNonceRef && onVerifyRef && window.tokenproof) {
@@ -72,25 +76,25 @@ export const TokenProofProvider = ({
 
 	const login = () => {
 		if (window.tokenproof) {
-			window.tokenproof.login(config);
+			window.tokenproof.login(internalConfig);
 		}
 	};
 
 	const logout = () => {
 		if (window.tokenproof) {
-			window.tokenproof.logout(config);
+			window.tokenproof.logout(internalConfig);
 		}
 	};
 
 	const loginButton = () => {
 		if (window.tokenproof) {
-			window.tokenproof.loginButton(config);
+			window.tokenproof.loginButton(internalConfig);
 		}
 	};
 
 	const close = () => {
 		if (window.tokenproof) {
-			window.tokenproof.close(config);
+			window.tokenproof.close(internalConfig);
 		}
 	};
 
