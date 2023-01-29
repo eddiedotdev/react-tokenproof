@@ -51,7 +51,7 @@ After adding & configuring the `TokenProofProvider`, pull in the `useTokenProof`
 
 `const { login, logout, close, loginButton, setEvents } = useTokenProof();`
 
-Make sure you apply the `onNonce` and `onVerify` callbacks on the `setEvents` method on load of the component
+Make sure you set the `onNonce` and `onVerify` callbacks using `setEvents` on load of the component
 
 ```
 useEffect(() => {
