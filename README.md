@@ -33,10 +33,13 @@ In order to use `react-tokenproof` you will need to have a `React` environment s
 
 ## Setup
 
-The current version of this package leverages a `TokenProofProvider` to inject a config object as well as 2 event handlers:
+The current version of this package leverages a `TokenProofProvider` to inject a config object:
 
 ```
-<TokenProofProvider config={{ appId: 'my-app-id', webhook: 'https://my-webhook.com', }}>
+<TokenProofProvider config={{
+    appId: 'my-app-id',
+    webhook: 'https://my-webhook.com',
+}}>
     <App />
 </TokenProofProvider>
 
