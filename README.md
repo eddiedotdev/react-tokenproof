@@ -9,7 +9,7 @@ This package is to be used when authenticating with Tokenproof in a React enviro
 ## Quick Features
 
 -   Context provider for configuring keys
--   Utility methods provided from TokenProof: `login`, `logout`, `close`, `loginButton`
+-   Utility methods provided from TokenProof: `login`, `logout`, `close`, `loginButton`, `setEvents`
 
 ## Installation
 
