@@ -47,11 +47,11 @@ The current version of this package leverages a `TokenProofProvider` to inject a
 
 ## Usage
 
-After adding & configuring the `TokenProofProvider`, pull in the `useTokenProof` hook:
+After adding & configuring the `TokenProofProvider`, pull in the `useTokenProof`. You can use the following methods:
 
 `const { login, logout, close, loginButton, setEvents } = useTokenProof();`
 
-Make sure you set the `onNonce` and `onVerify` callbacks using `setEvents` on load of the component
+Set the `onNonce` and/or `onVerify` callbacks using `setEvents` on load of the component
 
 ```
 useEffect(() => {

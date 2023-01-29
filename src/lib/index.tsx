@@ -49,29 +49,38 @@ export const TokenProofProvider = ({
 	};
 
 	useEffect(() => {
-		if (onNonceRef && onVerifyRef && window.tokenproof) {
-			const onNonce = onNonceRef.current as any;
+		if (onVerifyRef && window.tokenproof) {
 			const onVerify = onVerifyRef.current as any;
-
-			window.tokenproof.on("nonce", (e: any) => onNonce(e));
-			window.tokenproof.on("nonce", (e: any) => onVerify.current(e));
-
+			window.tokenproof.on("verify", (e: any) => onVerify(e));
 			return () => {
-				window.tokenproof.close("nonce");
 				window.tokenproof.close("verify");
 			};
 		}
-	}, [window.tokenproof, onNonceRef, onVerifyRef]);
+	}, [window.tokenproof, onVerifyRef]);
+
+	useEffect(() => {
+		if (onNonceRef && window.tokenproof) {
+			const onNonce = onNonceRef.current as any;
+			window.tokenproof.on("nonce", (e: any) => onNonce(e));
+			return () => {
+				window.tokenproof.close("nonce");
+			};
+		}
+	}, [window.tokenproof, onNonceRef]);
 
 	const setEvents = ({
 		onNonce,
 		onVerify,
 	}: {
-		onNonce: (data: any) => any;
-		onVerify: (data: any) => any;
+		onNonce?: (data: any) => any;
+		onVerify?: (data: any) => any;
 	}) => {
-		onNonceRef.current = onNonce;
-		onVerifyRef.current = onVerify;
+		if (onNonce) {
+			onNonceRef.current = onNonce;
+		}
+		if (onVerify) {
+			onVerifyRef.current = onVerify;
+		}
 	};
 
 	const login = () => {
