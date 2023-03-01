@@ -1,7 +1,7 @@
 {
   "name": "react-tokenproof",
   "private": false,
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "",
   "license": "MIT",
   "type": "module",
@@ -19,6 +19,7 @@
     "README.md"
   ],
   "main": "./dist/react-tokenproof.umd.js",
+  "types": "./types/index.d.ts",
   "module": "./dist/react-tokenproof.es.js",
   "exports": {
     ".": {
