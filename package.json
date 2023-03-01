@@ -1,77 +1,77 @@
 {
-	"name": "react-tokenproof",
-	"private": false,
-	"version": "0.4.4",
-	"description": "",
-	"license": "MIT",
-	"type": "module",
-	"author": "Eddi3Js",
-	"keywords": [
-		"react",
-		"tokenproof"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/eddi3js/react-tokenproof.git"
-	},
-	"files": [
-		"dist",
-		"README.md"
-	],
-	"main": "./dist/react-tokenproof.js",
-	"module": "./dist/react-tokenproof.es.js",
-	"exports": {
-		".": {
-			"import": "./dist/react-tokenproof.es.js",
-			"require": "./dist/react-tokenproof.js"
-		}
-	},
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"watch": "vitest",
-		"coverage": "vitest run --coverage"
-	},
-	"dependencies": {
-		"path": "^0.12.7",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-helmet": "^6.1.0"
-	},
-	"devDependencies": {
-		"@types/node": "^18.11.11",
-		"@types/react": "^18.0.24",
-		"@types/react-dom": "^18.0.8",
-		"@types/react-helmet": "^6.1.6",
-		"@vitejs/plugin-react": "^2.2.0",
-		"typescript": "^4.6.4",
-		"vite": "^3.2.3"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"node": true,
-			"es2020": true
-		},
-		"extends": [
-			"eslint:recommended",
-			"plugin:react/recommended"
-		],
-		"parserOptions": {
-			"sourceType": "module"
-		}
-	}
+  "name": "react-tokenproof",
+  "private": false,
+  "version": "0.4.5",
+  "description": "",
+  "license": "MIT",
+  "type": "module",
+  "author": "Eddi3Js",
+  "keywords": [
+    "react",
+    "tokenproof"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eddi3js/react-tokenproof.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/react-tokenproof.js",
+  "module": "./dist/react-tokenproof.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-tokenproof.es.js",
+      "require": "./dist/react-tokenproof.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.11",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-helmet": "^6.1.6",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  }
 }
