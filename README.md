@@ -17,7 +17,7 @@ npm install react-tokenproof
 yarn add react-tokenproof
 
 # pnpm
-pnpm install react-rokenproof
+pnpm install react-tokenproof
 ```
 
 ### `React` environment
