@@ -1,7 +1,3 @@
-Eduardo SanMarco
-8:13 AM (0 minutes ago)
-to me
-
 # React-Tokenproof
 
 This package is to be used when authenticating with Tokenproof in a React environment.
